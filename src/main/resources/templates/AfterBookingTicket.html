@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Form Success Page</title>
+    <!-- Add the Bootstrap CSS link here -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* simple selector */
+        body {
+            background-color: rgb(253, 243, 223);
+        }
+
+        header {
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            background-color: rgb(192, 149, 233);
+        }
+
+        footer {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+
+        p,
+        h1 {
+            padding: 10px;
+            margin: 0%;
+        }
+
+        section {
+            position: absolute;
+            top: 5%;
+            left: 25%;
+            width: 50%;
+        }
+
+        .ticket-details {
+            margin-top: 30px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* Container background color */
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .back-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <header>
+            <h1>Ticket Details</h1>
+            <p>Your Train Number: <span th:text="${trainNo}"></span></p>
+            <p>Ticket ID: <span th:text="${id}"></span></p>
+            <p>Train Name: <span th:text="${train}"></span></p>
+        </header>
+        <div>
+            <h1>Your Ticket has been successfully Booked!!!</h1>
+            <p>We will verify and mail you back for any queries.</p>
+        </div>
+        <!-- Use Bootstrap classes for the button -->
+        <a href="/welcome" class="btn btn-primary back-button">Back to Home</a>
+    </section>
+
+    <!-- Add the Bootstrap JS script here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

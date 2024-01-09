@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Train Reservation System</title>
+
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 0;
+		}
+
+		fieldset {
+			margin: 50px;
+			padding-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			background-color: #fff;
+		}
+
+		h1 {
+			color: #333;
+			text-align: center;
+		}
+
+		p {
+			color: #666;
+			text-align: center;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+		}
+
+		th,
+		td {
+			border: 1px solid #ddd;
+			padding: 12px;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f2f2f2;
+		}
+
+		a {
+			display: block;
+			text-align: center;
+			margin-top: 20px;
+			padding: 10px 20px;
+			background-color: #3498db;
+			color: #fff;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		a:hover {
+			background-color: #2980b9;
+		}
+	</style>
+</head>
+
+<body>
+	<fieldset>
+		<div>
+			<h1>Welcome to the Train Reservation System</h1>
+			<p>Book tickets for the most luxurious trains ever</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Train Number</th>
+						<th>Train Name</th>
+						<th>Start Destination</th>
+						<th>End Destination</th>
+						<th>Seat Availability</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>05708</td>
+						<td>Katihar Radhikapur Passenger Special</td>
+						<td>Katihar</td>
+						<td>Radhikapur</td>
+					</tr>
+					<tr>
+						<td>05206</td>
+						<td>Pataliputra sonpur Mela Special</td>
+						<td>Pataliputra</td>
+						<td>Sonpur</td>
+					</tr>
+					<tr>
+						<td>08830</td>
+						<td>Haridwar champa Special</td>
+						<td>Haridwar</td>
+						<td>Champa</td>
+					</tr>
+					<tr>
+						<td>05749</td>
+						<td>New Jalpaiguri Haldibari Passenger Special</td>
+						<td>New Jalpaiguri</td>
+						<td>Haldibari</td>
+					</tr>
+					<tr>
+						<td>05750</td>
+						<td>Haldibari New Jalpaiguri Passenger Special</td>
+						<td>Haldibari</td>
+						<td>New Jalpaiguri</td>
+					</tr>
+					<tr>
+						<td>05251</td>
+						<td>Sonpur Pataliputra Mela Special</td>
+						<td>Sonpur</td>
+						<td>Pataliputra</td>
+					</tr>
+					<tr>
+						<td>05203</td>
+						<td>Sonpur Chhapra Mela Special</td>
+						<td>sonpur</td>
+						<td>chapra</td>
+					</tr>
+					<tr>
+						<td>05894</td>
+						<td>Rangapara North Rangiya Passenger Special</td>
+						<td>Rangapara North</td>
+						<td>Rangiya</td>
+					</tr>
+					<tr>
+						<td>06572</td>
+						<td>Tumkur KSR Bengaluru</td>
+						<td>Tumkur</td>
+						<td>Bangalore city</td>
+					</tr>
+					<tr>
+						<td>05290</td>
+						<td>Pune Muzaffarpur AC Super Fast Chhath Puja Special</td>
+						<td>Pune</td>
+						<td>Muzaffarpur</td>
+					</tr>
+					<!-- Add other train details here -->
+				</tbody>
+			</table>
+			<a th:href="@{/welcome}">Home Page</a>
+		</div>
+	</fieldset>
+</body>
+
+</html>

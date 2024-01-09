@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Booking Form</title>
+    <style type="text/css">
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #ticketForm {
+            width: 50%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #6932a8;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #531c73;
+        }
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('trainNumber').addEventListener('change', function () {
+                var trainNumber = this.value;
+                if (trainNumber !== '') {
+                    // Make an AJAX call to fetch train name
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', '/getTrainName?trainNumber=' + trainNumber, true);
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            document.getElementById('trainName').value = xhr.responseText;
+                        }
+                    };
+                    xhr.send();
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('travelDate').addEventListener('change', function () {
+                var travelDate = new Date(this.value + ":00");
+                let currentDate = new Date();
+                currentDate.setHours(0, 0, 0, 0);
+               	console.log(travelDate);
+				console.log(currentDate);
+                if (travelDate <= currentDate) {             
+                    alert('Please select a future date.');
+                    this.value = '';
+                }
+            });
+            });
+    </script>
+</head>
+
+<body>
+
+    <div id="ticketForm">
+        <h1 style="color: red;"><span th:text="${Message}"></span></h1>
+        <form th:action="@{processform}" th:object="${details}" method="post">
+            <div class="form-group">
+                <input type="hidden" id="ticket_id" th:field="*{Ticket_id}" name="Ticket_id" readonly>
+            </div>
+
+            <div class="form-group">
+                <span th:if="${#fields.hasErrors('Train_Number')}" th:errors="*{Train_Number}"></span><br>
+                <label for="trainNumber">Train Number:</label>
+                <input type="text" id="trainNumber" th:field="*{Train_Number}" name="Train_Number" placeholder="Enter the train number" required>
+            </div>
+
+            <div class="form-group">
+                <span th:if="${#fields.hasErrors('Train_Number')}" th:errors="*{Train_Number}"></span><br>
+                <label for="trainNumber">Train Name:</label>
+                <input type="text" id="trainName" th:field="*{Train_Name}" name="trainName" readonly>
+            </div>
+
+            <div class="form-group">
+                <span th:if="${#fields.hasErrors('startLocation')}" th:errors="*{startLocation}"></span><br>
+                <label for="startLocation">Start Location:</label>
+                <input type="text" id="startLocation" th:field="*{startLocation}" name="startLocation" placeholder="Enter the start location" required>
+            </div>
+
+            <div class="form-group">
+                <span th:if="${#fields.hasErrors('endLocation')}" th:errors="*{endLocation}"></span><br>
+                <label for="endLocation">End Location:</label>
+                <input type="text" id="endLocation" th:field="*{endLocation}" name="endLocation" placeholder="Enter the end location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="travelDate">Travel Date and Time:</label>
+                <input type="datetime-local" th:field="*{dateTime}" id="travelDate" name="travelDate" placeholder="Enter the date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="trainClass">Select Class:</label>
+                <select id="trainClass" name="trainClass" th:field="*{classType}">
+                    <option value="First Class">First Class</option>
+                    <option value="Second Class">Second Class</option>
+                    <option value="Third Class">Third Class</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="trainType">Select Train Type:</label>
+                <select id="trainType" name="trainType" th:field="*{trainType}">
+                    <option value="Ac Sleeper">Ac Sleeper</option>
+                    <option value="General">General</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Book Ticket</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

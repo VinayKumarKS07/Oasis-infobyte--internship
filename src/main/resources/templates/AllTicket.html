@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Train Number</th>
+                <th>Train Name</th>
+                <th>Start Location</th>
+                <th>End Location</th>
+                <th>Departure Time</th>
+                <th>Class Type</th>
+                <th>Train Type</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="t : ${ticket}">
+                <td th:text="${t.Ticket_id}" />
+                <td th:text="${t.Train_Number}" />
+                <td th:text="${t.Train_Name}" />
+                <td th:text="${t.startLocation}" />
+                <td th:text="${t.endLocation}" />
+                <td th:text="${t.dateTime}" />
+                <td th:text="${t.classType}" />
+                <td th:text="${t.trainType}" />
+                <!-- Add more table data cells if needed -->
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/welcome}" class="btn btn-primary">Back</a>
+	
+</body>
+</html>
